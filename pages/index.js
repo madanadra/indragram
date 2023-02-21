@@ -18,7 +18,7 @@ export default function Home() {
   return (
     session &&
     <Layout title='Home'>
-      <div className='flex flex-col md:flex-row relative'>
+      <div className='flex flex-col md:flex-row min-h-screen relative'>
         <Leftbar />
         <Topbar />
         <div className="grow grid content-center justify-items-center text-center py-5 px-3.5 md:py-9 md:px-8 gap-y-3">
