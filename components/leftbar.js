@@ -16,7 +16,7 @@ export default function Leftbar() {
     }
 
     return (
-        <div className="p-3 hidden md:grid xl:w-[245px] content-around border-r border-slate-300 sticky top-0">
+        <div className="py-9 px-3 hidden md:grid xl:w-[245px] h-screen content-between border-r border-slate-300 sticky top-0">
             <h1 className="hidden xl:grid font-logo text-2xl font-bold mx-3">Indragram</h1>
             <div className='xl:hidden rounded-full p-3 cursor-pointer hover:bg-slate-50 flex items-center gap-x-3.5 group'>
                 <div className='h-[25px] p-px group-hover:p-0'>

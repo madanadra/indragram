@@ -18,18 +18,16 @@ export default function Home() {
   return (
     session &&
     <Layout title='Home'>
-      <div className='flex flex-col md:flex-row min-h-screen overflow-y-scroll'>
+      <div className='flex flex-col md:flex-row relative'>
         <Leftbar />
         <Topbar />
-        <div className="grow grid place-content-center pt-3.5 px-3.5 pb-16">
-          <div className='text-center grid justify-items-center gap-y-3'>
-            <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
-            className='h-52 aspect-square rounded-full border-2 border-slate-300 p-1' />
-            <h1 className='text-3xl font-medium mt-3'>{session.user.name}</h1>
-            <h1 className='text-lg font-medium text-slate-500 mb-3'>{session.user.email}</h1>
-            <h1 onClick={() => signOut()}
-            className='py-2 px-5 bg-rose-500 text-slate-50 font-medium rounded-md cursor-pointer w-max'>Sign out</h1>
-          </div>
+        <div className="grow grid content-center justify-items-center text-center py-5 px-3.5 md:py-9 md:px-8 gap-y-3">
+          <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
+          className='h-52 aspect-square rounded-full border-2 border-slate-300 p-1 mb-2' />
+          <h1 className='text-3xl font-medium'>{session.user.name}</h1>
+          <h1 className='text-lg text-slate-500'>{session.user.email}</h1>
+          <h1 onClick={() => signOut()}
+          className='py-1 px-1.5 underline text-rose-500 font-medium cursor-pointer leading-none'>Sign out</h1>
         </div>
         <Bottombar />
       </div>

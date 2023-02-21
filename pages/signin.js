@@ -15,11 +15,23 @@ export default function Signin() {
     return (
         !session &&
         <Layout title='Sign in'>
-            <div className="grow grid place-content-center p-3.5 pb-[50px] w-screen h-screen">
-                <div className='text-center grid justify-items-center gap-y-3'>
-                    <h1 className='text-3xl font-medium font-logo mb-3'>Indragram</h1>
+            <div className="grid items-center py-5 px-3.5 md:py-9 md:px-8 w-full min-h-screen">
+                <div className='w-full max-w-xs grid gap-y-2 mx-auto'>
+                    <h1 className='text-3xl text-center font-medium font-logo mb-9'>Indragram</h1>
+                    <h1 className='text-sm font-bold text-slate-500'>Email or Username</h1>
+                    <input type='text' className='rounded-lg outline-none border border-slate-300 focus:border-sky-500 py-2 px-3 w-full' />
+                    <h1 className='text-sm font-bold text-slate-500 mt-3'>Password</h1>
+                    <input type='password' className='rounded-lg outline-none border border-slate-300 focus:border-sky-500 py-2 px-3 w-full' />
+                    <h1 className='py-2 px-3 bg-sky-500 text-center text-slate-50 font-medium rounded-md cursor-pointer mt-3'>Sign in</h1>
+                    <div className='my-5 flex items-center gap-x-2'>
+                        <hr className='border-slate-300 w-full' />
+                        <h1 className='text-sm font-bold text-slate-500 px-1'>OR</h1>
+                        <hr className='border-slate-300 w-full' />
+                    </div>
                     <h1 onClick={() => signIn('google')}
-                    className='py-2 px-5 bg-sky-500 text-slate-50 font-medium rounded-md cursor-pointer w-max'>Sign in</h1>
+                    className='font-medium text-slate-500 py-2 px-3 rounded-lg border border-slate-300 cursor-pointer hover:bg-slate-50 flex justify-center items-center gap-x-3'>
+                        <img src='/google.svg' alt='Google' className='w-5' />Google
+                    </h1>
                 </div>
             </div>
         </Layout>
