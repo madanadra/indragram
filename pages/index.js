@@ -22,7 +22,7 @@ export default function Home() {
       <div className='flex flex-col md:flex-row'>
         <Leftbar />
         <Topbar />
-        <div className="grow grid justify-items-center text-center py-[70px] px-3.5 md:py-9 md:px-8 gap-y-3">
+        <div className="grow grid content-start justify-items-center text-center py-[70px] px-3.5 md:py-9 md:px-8 gap-y-3">
           <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
           className='h-52 aspect-square rounded-full border-2 border-slate-300 p-1 mb-2' />
           <h1 className='text-3xl font-medium'>{session.user.name}</h1>
