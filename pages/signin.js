@@ -15,7 +15,7 @@ export default function Signin() {
     return (
         !session &&
         <Layout title='Sign in'>
-            <div className="grid items-center py-5 px-3.5 md:py-9 md:px-8 w-full min-h-screen">
+            <div className="grid items-center py-5 px-3.5 md:py-9 md:px-8 w-full h-full">
                 <div className='w-full max-w-xs grid gap-y-2 mx-auto'>
                     <h1 className='text-3xl text-center font-medium font-logo mb-9'>Indragram</h1>
                     <h1 className='text-sm font-bold text-slate-500'>Email or Username</h1>
