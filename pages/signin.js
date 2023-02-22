@@ -30,7 +30,7 @@ export default function Signin() {
                     </div>
                     <h1 onClick={() => signIn('google')}
                     className='font-medium text-slate-500 py-2 px-3 rounded-lg border border-slate-300 cursor-pointer hover:bg-slate-50 flex justify-center items-center gap-x-3'>
-                        <img src='/google.svg' alt='Google' className='w-5' />Google
+                        <img src='/google.svg' alt='Google' className='h-5' />Google
                     </h1>
                 </div>
             </div>

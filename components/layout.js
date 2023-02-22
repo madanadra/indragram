@@ -9,7 +9,7 @@ export default function Layout({title, children}) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <title>{pageTitle}</title>
             </Head>
-            <main className="font-main text-[#000] bg-[#fff] w-screen h-screen overflow-y-scroll">
+            <main className="font-main text-[#000] bg-[#fff]">
                 {children}
             </main>
         </>
