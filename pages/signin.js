@@ -35,7 +35,7 @@ export default function Signin() {
                         <img src='/google.svg' alt='Google' className='h-5' />Google
                     </h1>
                     <h1 className='text-xs text-slate-500 font-medium text-center mt-3'>
-                        Don't have an account? <span className='text-blue-500 cursor-pointer hover:underline'>Sign up</span>
+                        Don&apos;t have an account? <span className='text-blue-500 cursor-pointer hover:underline'>Sign up</span>
                     </h1>
                     <div className='flex gap-x-3.5 text-blue-500 text-xs justify-center mt-12'>
                         <span className='cursor-pointer hover:underline'>Terms</span>
