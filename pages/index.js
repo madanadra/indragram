@@ -1,15 +1,22 @@
-import { useSession, signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Layout from "../components/layout";
 import Bottombar from "../components/bottombar";
 import Leftbar from "../components/leftbar";
 import Topbar from "../components/topbar";
-import { ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
+import More from '../components/more';
+import Create from '../components/create';
+import Notifications from '../components/notifications';
+import Search from '../components/search';
 
 export default function Home() {
   const {data: session} = useSession()
   const router = useRouter()
+  const [more, setMore] = useState(false)
+  const [create, setCreate] = useState(false)
+  const [notifications, setNotifications] = useState(false)
+  const [search, setSearch] = useState(false)
 
   useEffect(() => {
     !session &&
@@ -20,20 +27,17 @@ export default function Home() {
     session &&
     <Layout title='Home'>
       <div className='flex flex-col md:flex-row'>
-        <Leftbar />
-        <Topbar />
-        <div className="grow grid content-start justify-items-center text-center py-[70px] px-3.5 md:py-9 md:px-8 gap-y-3">
-          <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
-          className='h-52 aspect-square rounded-full border-2 border-slate-300 p-1 mb-2' />
-          <h1 className='text-3xl font-medium'>{session.user.name}</h1>
-          <h1 className='text-lg text-slate-500'>{session.user.email}</h1>
-          <h1 onClick={() => signOut()}
-          className='font-medium text-red-500 py-2 px-3 rounded-lg border border-red-300 cursor-pointer hover:bg-red-50 flex items-center gap-x-3 mt-2'>
-            <ArrowLeftOnRectangleIcon className='h-5' />Sign out
-          </h1>
+        <Leftbar setMore={setMore} setCreate={setCreate} setNotifications={setNotifications} setSearch={setSearch} />
+        <Topbar setMore={setMore} setCreate={setCreate} setNotifications={setNotifications} setSearch={setSearch} />
+        <div className="grow flex gap-x-5 max-w-4xl mx-auto bg-slate-200">
+          
         </div>
         <Bottombar />
       </div>
+      <Search search={search} setSearch={setSearch} />
+      <Notifications notifications={notifications} setNotifications={setNotifications} />
+      <Create create={create} setCreate={setCreate} />
+      <More more={more} setMore={setMore} />
     </Layout>
   )
 }

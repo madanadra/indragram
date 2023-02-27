@@ -19,10 +19,10 @@ export default function Signin() {
         <Layout title='Sign in'>
             <div className="grid gap-y-5 py-5 px-3.5 md:py-9 md:px-8 w-full max-w-sm mx-auto">
                 <h1 className='text-3xl text-center font-medium font-logo mb-8 leading-none'>Indragram</h1>
-                <div className='grid gap-y-3.5 rounded-lg border border-slate-300 bg-slate-100 p-3.5'>
+                <div className='grid gap-y-3.5 rounded-lg border border-slate-200 bg-slate-100 p-3.5'>
                     <div className='relative'>
                         <input type='text' id='username' placeholder=' ' 
-                        className='pt-5 pb-2 px-2.5 border border-slate-300 focus:border-blue-500 bg-[#fff] 
+                        className='pt-5 pb-2 px-2.5 border border-slate-200 focus:border-blue-500 bg-[#fff] 
                         rounded-md w-full peer leading-none outline-none' />
                         <label for='username' 
                         className='text-slate-500 leading-none top-2 text-xs 
@@ -32,7 +32,7 @@ export default function Signin() {
                     </div>
                     <div className='relative'>
                         <input type={showPass ? 'text' : 'password'} id='password' placeholder=' ' 
-                        className='pt-5 pb-2 px-2.5 border border-slate-300 focus:border-blue-500 bg-[#fff] 
+                        className='pt-5 pb-2 px-2.5 border border-slate-200 focus:border-blue-500 bg-[#fff] 
                         rounded-md w-full peer leading-none outline-none' />
                         <label for='password' 
                         className='text-slate-500 leading-none top-2 text-xs 
@@ -53,12 +53,12 @@ export default function Signin() {
                     <h1 className='text-xs font-semibold text-blue-500 w-max mx-auto cursor-pointer leading-none'>Forgot password?</h1>
                 </div>
                 <div className='flex items-center gap-x-2'>
-                    <hr className='border-slate-300 w-full' />
+                    <hr className='border-slate-200 w-full' />
                     <h1 className='text-sm font-bold text-slate-500 px-1'>or</h1>
-                    <hr className='border-slate-300 w-full' />
+                    <hr className='border-slate-200 w-full' />
                 </div>
                 <h1 onClick={() => signIn('google')}
-                className='text-slate-500 py-2 px-3 rounded-lg border border-slate-300 cursor-pointer hover:bg-slate-100 flex justify-center items-center gap-x-2'>
+                className='text-slate-500 py-2 px-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-100 flex justify-center items-center gap-x-2'>
                     <img src='/google.svg' alt='Google' className='h-5' />Sign in with Google
                 </h1>
                 <h1 className='text-xs text-slate-500 text-center'>
