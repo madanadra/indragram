@@ -1,8 +1,14 @@
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useSession } from 'next-auth/react'
+import { useEffect, useRef } from 'react'
 
 export default function Search({search, setSearch}) {
     const {data: session} = useSession()
+    const input = useRef()
+
+    useEffect(() => {
+        search && input.current.focus()
+    }, [search])
 
     const User = ({username, name}) => {
         return (
@@ -20,13 +26,13 @@ export default function Search({search, setSearch}) {
 
     return (
         <div onClick={() => setSearch(false)}
-        className={`${!search && 'hidden'} fixed inset-0 bg-[#000] grid items-center bg-opacity-50`}>
+        className={`${!search && 'hidden'} fixed inset-0 bg-[#000] grid items-center bg-opacity-50 modal`}>
             <div className="w-full max-w-sm p-3.5 mx-auto">
                 <div className="grid gap-y-px bg-slate-200 rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
                     <h1 className='bg-[#fff] text-center font-medium p-2.5'>Search</h1>
                     <div>
                         <div className='bg-[#fff] py-2.5 px-3.5'>
-                            <input type='text' placeholder='Search'
+                            <input type='text' placeholder='Search' ref={input}
                             className='w-full outline-none bg-slate-100 py-1.5 px-2.5 rounded-md' />
                         </div>
                         <div className='bg-[#fff] grid content-start pb-2.5 aspect-square'>

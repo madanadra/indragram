@@ -5,7 +5,7 @@ export default function Bottombar() {
     const {data: session} = useSession()
 
     return (
-        <div className="md:hidden bg-[#fff] h-[50px] flex items-center justify-around border-t border-slate-200 fixed bottom-0 w-full">
+        <div className="md:hidden bg-[#fff] h-[50px] flex items-center justify-around border-t border-slate-200 fixed bottom-0 w-full z-10">
             <HomeIcon className='h-6 hover:h-[23px] hover:text-slate-500 hover:ml-px' />
             <MapIcon className='h-6 hover:h-[23px] hover:text-slate-500 hover:ml-px' />
             <FilmIcon className='h-6 hover:h-[23px] hover:text-slate-500 hover:ml-px' />

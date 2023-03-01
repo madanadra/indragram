@@ -4,6 +4,23 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    scroll-behavior: smooth;
+}
+
 body {
     overflow-y: scroll;
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.modal {
+    animation: modal 0.3s;
+}
+
+@keyframes modal {
+    0% {opacity: 0.1}
+    100% {opacity: 1}
 }
