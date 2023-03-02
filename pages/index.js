@@ -45,7 +45,7 @@ export default function Home() {
 
   const Card = ({name, time, like, caption, comment}) => {
     return (
-      <div className='grid gap-y-3.5 py-5 bg-[#fff]'>
+      <div className='grid gap-y-3 py-5 bg-[#fff]'>
         <div className='flex items-center gap-x-3 max-[470px]:px-3.5'>
           <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
           className='rounded-full aspect-square h-8 border border-slate-200 cursor-pointer' />
