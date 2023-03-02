@@ -17,7 +17,7 @@ export default function Leftbar({setMore, setCreate, setNotifications, setSearch
     }
 
     return (
-        <div className="py-9 px-3 hidden md:grid xl:w-[245px] h-screen content-between border-r border-slate-200 sticky top-0">
+        <div className="py-9 px-3 z-10 hidden md:grid xl:w-[245px] h-screen content-between border-r border-slate-200 sticky top-0">
             <h1 className="hidden xl:grid font-logo text-2xl font-bold mx-3">Indragram</h1>
             <div className='xl:hidden rounded-full p-3 cursor-pointer hover:bg-slate-100 flex items-center gap-x-3.5 group'>
                 <div className='h-[25px] p-px group-hover:p-0'>

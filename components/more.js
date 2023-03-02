@@ -9,7 +9,7 @@ export default function More({more, setMore}) {
 
     return (
         <div onClick={() => setMore(false)}
-        className={`${!more && 'hidden'} fixed inset-0 bg-[#000] grid items-center bg-opacity-50 modal`}>
+        className={`${!more && 'hidden'} fixed z-20 inset-0 bg-[#000] grid items-center bg-opacity-50 modal`}>
             <div className="w-full max-w-sm p-3.5 mx-auto">
                 <div className="grid gap-y-px bg-slate-200 rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
                     <Menu name='Settings' />

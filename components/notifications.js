@@ -18,7 +18,7 @@ export default function Notifications({notifications, setNotifications}) {
 
     return (
         <div onClick={() => setNotifications(false)}
-        className={`${!notifications && 'hidden'} fixed inset-0 bg-[#000] grid items-center bg-opacity-50 modal`}>
+        className={`${!notifications && 'hidden'} fixed z-20 inset-0 bg-[#000] grid items-center bg-opacity-50 modal`}>
             <div className="w-full max-w-sm p-3.5 mx-auto">
                 <div className="grid gap-y-px bg-slate-200 rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
                     <h1 className='bg-[#fff] text-center font-medium p-2.5'>Notifications</h1>

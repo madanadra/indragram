@@ -18,7 +18,13 @@ export default function Home() {
   const [create, setCreate] = useState(false)
   const [notifications, setNotifications] = useState(false)
   const [search, setSearch] = useState(false)
-  const story = useRef()
+  const story = useRef(0)
+  const [right, setRight] = useState(false)
+  const [left, setLeft] = useState(false)
+
+  useEffect(() => {
+    slide()
+  }, []);
 
   useEffect(() => {
     !session &&
@@ -30,7 +36,7 @@ export default function Home() {
       <div>
         <div className='grid gap-y-1.5 w-16 cursor-pointer'>
           <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
-          className='rounded-full aspect-square h-16 p-0.5 border-2 border-blue-500' />
+          className='rounded-full aspect-square w-full p-0.5 border-2 border-blue-500' />
           <h1 className='text-xs text-center truncate'>{name}</h1>
         </div>
       </div>
@@ -91,6 +97,11 @@ export default function Home() {
     story.current.scrollLeft += scrollOffset;
   };
 
+  const slide = () => {
+    story.current.scrollLeft > 0 ? setLeft(true) : setLeft(false)
+    story.current.scrollLeft < story.current.scrollWidth - story.current.clientWidth ? setRight(true) : setRight(false)
+  }
+
   return (
     session &&
     <Layout title='Home'>
@@ -99,23 +110,30 @@ export default function Home() {
         <Topbar setMore={setMore} setCreate={setCreate} setNotifications={setNotifications} setSearch={setSearch} />
         <div className="grow flex justify-center gap-x-14 max-w-[910px] mx-auto py-[70px] md:py-10 md:px-7">
           <div className='w-full max-w-[470px] grid content-start gap-y-px bg-slate-200'>
-            <div className='relative grid bg-[#fff] -mb-px pb-5 max-[470px]:px-3.5'>
-              <div onClick={() => scroll(-100)} 
-              className='absolute bottom-10 top-5 left-0 grid place-content-center bg-slate-200 bg-opacity-50 hover:bg-opacity-70 cursor-pointer'>
-                <ChevronLeftIcon className='h-6' />
+            <div className='relative grid bg-[#fff] -mb-px pb-5'>
+              <div onClick={() => scroll(-story.current.clientWidth)} 
+              className={`${!left && 'hidden'} absolute bottom-5 top-0 left-0 max-[470px]:left-3.5 grid place-content-center pointer-events-none`}>
+                <ChevronLeftIcon className='h-7 aspect-square rounded-full p-1 bg-slate-100 text-slate-500 hover:text-blue-500 pointer-events-auto cursor-pointer' />
               </div>
-              <div onClick={() => scroll(100)} 
-              className='absolute bottom-10 top-5 right-0 grid place-content-center bg-slate-200 bg-opacity-50 hover:bg-opacity-70 cursor-pointer'>
-                <ChevronRightIcon className='h-6' />
+              <div onClick={() => scroll(story.current.clientWidth)} 
+              className={`${!right && 'hidden'} absolute bottom-5 top-0 right-0 max-[470px]:right-3.5 grid place-content-center pointer-events-none`}>
+                <ChevronRightIcon className='h-7 aspect-square rounded-full p-1 bg-slate-100 text-slate-500 hover:text-blue-500 pointer-events-auto cursor-pointer' />
               </div>
-              <div ref={story} className='flex gap-x-4 overflow-auto slider'>
+              <div ref={story} onScroll={() => slide()} className='flex gap-x-4 overflow-auto max-[470px]:px-3.5 slider'>
                 <Story name='profile_1_lalayeyeye' />
                 <Story name='profile_2_lalayeyeye' />
                 <Story name='profile_3_lalayeyeye' />
                 <Story name='profile_4_lalayeyeye' />
-                <Story name='profile_2_lalayeyeye' />
-                <Story name='profile_3_lalayeyeye' />
-                <Story name='profile_4_lalayeyeye' />
+                <Story name='profile_5_lalayeyeye' />
+                <Story name='profile_6_lalayeyeye' />
+                <Story name='profile_7_lalayeyeye' />
+                <Story name='profile_8_lalayeyeye' />
+                <Story name='profile_9_lalayeyeye' />
+                <Story name='profile_10_lalayeyeye' />
+                <Story name='profile_11_lalayeyeye' />
+                <Story name='profile_12_lalayeyeye' />
+                <Story name='profile_13_lalayeyeye' />
+                <Story name='profile_14_lalayeyeye' />
               </div>
             </div>
             <Card name='profile_1' time='10h' like='1,170 likes' comment='310'
