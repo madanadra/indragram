@@ -17,8 +17,8 @@ export default function Post({item}) {
             <EllipsisHorizontalIcon className='w-7 cursor-pointer hover:text-slate-500' />
             </div>
             <div className='overflow-x-auto rounded flex snap-mandatory snap-x slider'>
-                {item.asset.map(as => 
-                    <img alt='post' className='w-full h-auto snap-center' src={as} />    
+                {item.asset.map((as, i) => 
+                    <img key={i} alt='post' className='w-full h-auto snap-center' src={as} />    
                 )}
             </div>
             <div className='flex justify-between gap-x-3.5 max-[470px]:px-3.5'>

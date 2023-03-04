@@ -77,8 +77,8 @@ export default function Home() {
         <div className="grow flex justify-center gap-x-14 max-w-[910px] mx-auto py-[70px] md:py-10 md:px-7">
           <div className='w-full max-w-[470px] grid content-start gap-y-px bg-slate-200'>
             <Story />
-            {post.map(item => 
-              <Post item={item} />  
+            {post.map((item, i) => 
+              <Post key={i} item={item} />  
             )}
           </div>
           <div className='grow hidden md:grid content-start'>

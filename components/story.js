@@ -28,8 +28,8 @@ export default function Story() {
     return (
         <div className='relative grid bg-[#fff] -mb-px pb-5'>
             <div className="overflow-x-auto flex gap-x-4 max-[470px]:px-3.5 slider">
-                {data.map(item =>
-                <div>
+                {data.map((item, i) =>
+                <div key={i}>
                     <div className='grid gap-y-1.5 w-16 cursor-pointer'>
                     <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
                     className={`rounded-full aspect-square w-full p-0.5 border-2 ${item.see && 'border-slate-200'} border-blue-500`} />
