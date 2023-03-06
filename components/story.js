@@ -1,4 +1,6 @@
 import { useSession } from 'next-auth/react'
+import { useEffect, useRef, useState } from 'react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 export default function Story() {
     const {data: session} = useSession()
@@ -15,19 +17,34 @@ export default function Story() {
         {name: 'profile_sepuluh', see: true},
         {name: 'profile_sebelas', see: true},
     ]
+    const story = useRef()
+    const [left, setLeft] = useState(false)
+    const [right, setRight] = useState(false)
 
-    // const scroll = (scrollOffset) => {
-    //     story.current.scrollLeft += scrollOffset;
-    //   };
+    useEffect(() => {
+        slide()
+    }, [])
+
+    const scroll = (scrollOffset) => {
+        story.current.scrollLeft += scrollOffset;
+      };
     
-    // const slide = () => {
-    //     story.current.scrollLeft > 0 ? setLeft(true) : setLeft(false)
-    //     story.current.scrollLeft < story.current.scrollWidth - story.current.clientWidth ? setRight(true) : setRight(false)
-    // }
+    const slide = () => {
+        story.current.scrollLeft > 0 ? setLeft(true) : setLeft(false)
+        story.current.scrollLeft < story.current.scrollWidth - story.current.clientWidth ? setRight(true) : setRight(false)
+    }
 
     return (
-        <div className='relative grid bg-[#fff] -mb-px pb-5'>
-            <div className="overflow-x-auto flex gap-x-4 max-[470px]:px-3.5 slider">
+        <div className='relative grid pb-5'>
+            <div className={`${!left && 'hidden'} absolute top-0 bottom-5 left-3.5 grid place-content-center`}>
+                <ChevronLeftIcon onClick={() => scroll(-story.current.clientWidth)}
+                className='h-7 rounded-full p-1.5 bg-slate-200 hover:text-blue-500 cursor-pointer' />
+            </div>
+            <div className={`${!right && 'hidden'} absolute top-0 bottom-5 right-3.5 grid place-content-center`}>
+                <ChevronRightIcon onClick={() => scroll(story.current.clientWidth)}
+                className='h-7 rounded-full p-1.5 bg-slate-200 hover:text-blue-500 cursor-pointer' />
+            </div>
+            <div ref={story} onScroll={() => slide()} className="overflow-x-auto flex gap-x-4 max-[470px]:px-3.5 slider">
                 {data.map((item, i) =>
                 <div key={i}>
                     <div className='grid gap-y-1.5 w-16 cursor-pointer'>

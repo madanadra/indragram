@@ -20,9 +20,9 @@ export default function Notifications({notifications, setNotifications}) {
         <div onClick={() => setNotifications(false)}
         className={`${!notifications && 'hidden'} fixed z-20 inset-0 bg-[#000] grid items-center bg-opacity-50 modal`}>
             <div className="w-full max-w-sm p-3.5 mx-auto">
-                <div className="grid gap-y-px bg-slate-200 rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
-                    <h1 className='bg-[#fff] text-center font-medium p-2.5'>Notifications</h1>
-                    <div className='bg-[#fff] grid content-start py-2.5 aspect-square'>
+                <div className="grid bg-[#fff] rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
+                    <h1 className='text-center font-medium p-2.5 border-b border-slate-200'>Notifications</h1>
+                    <div className='grid content-start py-2.5 aspect-square'>
                         <h1 className="text-sm font-semibold px-3.5 pb-2">Earlier</h1>
                         <User name='profile_1' time='10h' follow />
                         <User name='profile_2' time='15h' />

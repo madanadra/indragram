@@ -10,7 +10,9 @@ import Create from '../components/create';
 import Notifications from '../components/notifications';
 import Search from '../components/search';
 import Story from '../components/story';
+import Suggest from '../components/suggest';
 import Post from '../components/post'
+import Footermenu from '../components/footermenu';
 
 export default function Home() {
   const {data: session} = useSession()
@@ -48,25 +50,19 @@ export default function Home() {
       comment: 244
     }
   ]
+  const suggest = [
+    {name: 'profile_1', desc: ['profile_2']},
+    {name: 'profile_2', sfy: true},
+    {name: 'profile_3', desc: ['profile_2', 'profile_3', 'profile_4', 'profile_5', 'profile_6', 'profile_7', 'profile_8']},
+    {name: 'profile_4', desc: ['profile_1', 'profile_2', 'profile_6', 'profile_7']},
+    {name: 'profile_5', desc: ['profile_3', 'profile_5', 'profile_9']},
+  ]
+  const footermenu = ['About', 'Help', 'API', 'Jobs', 'Privacy', 'Terms', 'Locations', 'Language', 'Indra verified']
 
   useEffect(() => {
     !session &&
     router.push('/signin')
   }, [session]);
-
-  const Suggest = ({name, desc}) => {
-    return (
-      <div className='flex gap-x-3 items-center py-2'>
-        <img src={session.user.image} alt='avatar' referrerPolicy='no-referrer' 
-        className='rounded-full h-8 border border-slate-200 cursor-pointer' />
-        <div className='grid gap-y-1.5 grow'>
-          <h1 className='text-sm font-semibold cursor-pointer truncate leading-none'>{name}</h1>
-          <h1 className='text-xs text-slate-500 truncate leading-none'>{desc}</h1>
-        </div>
-        <h1 className='text-xs font-semibold text-blue-500 cursor-pointer'>Follow</h1>
-      </div>
-    )
-  }
 
   return (
     session &&
@@ -75,7 +71,7 @@ export default function Home() {
         <Leftbar setMore={setMore} setCreate={setCreate} setNotifications={setNotifications} setSearch={setSearch} />
         <Topbar setMore={setMore} setCreate={setCreate} setNotifications={setNotifications} setSearch={setSearch} />
         <div className="grow flex justify-center gap-x-14 max-w-[910px] mx-auto py-[70px] md:py-10 md:px-7">
-          <div className='w-full max-w-[470px] grid content-start gap-y-px bg-slate-200'>
+          <div className='w-full max-w-[470px] grid content-start'>
             <Story />
             {post.map((item, i) => 
               <Post key={i} item={item} />  
@@ -95,30 +91,14 @@ export default function Home() {
               <h1 className='text-sm text-slate-500'>Suggestions for you</h1>
               <h1 className='text-xs cursor-pointer'>See all</h1>
             </div>
-            <Suggest name='profile_1' desc='Followed by profile_2' />
-            <Suggest name='profile_2' desc='Suggested for you' />
-            <Suggest name='profile_3' desc='Followed by profile_1' />
-            <Suggest name='profile_4' desc='Followed by profile_2 + 10 more' />
-            <Suggest name='profile_5' desc='Followed by profile_1 + 2 more' />
-            <h1 className='text-xs text-slate-500 leading-5 my-5'>
-              <span className='cursor-pointer hover:underline'>About</span>
-              <span> &sdot; </span>
-              <span className='cursor-pointer hover:underline'>Help</span>
-              <span> &sdot; </span>
-              <span className='cursor-pointer hover:underline'>API</span>
-              <span> &sdot; </span>
-              <span className='cursor-pointer hover:underline'>Jobs</span>
-              <span> &sdot; </span>
-              <span className='cursor-pointer hover:underline'>Privacy</span>
-              <span> &sdot; </span>
-              <span className='cursor-pointer hover:underline'>Terms</span>
-              <span> &sdot; </span>
-              <span className='cursor-pointer hover:underline'>Locations</span>
-              <span> &sdot; </span>
-              <span className='cursor-pointer hover:underline'>Language</span>
-              <span> &sdot; </span>
-              <span className='cursor-pointer hover:underline'>Indra verified</span> 
-            </h1>
+            {suggest.map((item, i) => 
+              <Suggest key={i} item={item} />
+            )}
+            <div className='text-xs text-slate-500 leading-5 my-5'>
+              {footermenu.map((item, i) => 
+                <Footermenu key={i} name={item} />
+              )}
+            </div>
             <h1 className='text-xs text-slate-500 leading-none'>&copy; 2023 INDRAGRAM FROM INDRA</h1>
           </div>
         </div>

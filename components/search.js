@@ -28,14 +28,14 @@ export default function Search({search, setSearch}) {
         <div onClick={() => setSearch(false)}
         className={`${!search && 'hidden'} fixed z-20 inset-0 bg-[#000] grid items-center bg-opacity-50 modal`}>
             <div className="w-full max-w-sm p-3.5 mx-auto">
-                <div className="grid gap-y-px bg-slate-200 rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
-                    <h1 className='bg-[#fff] text-center font-medium p-2.5'>Search</h1>
+                <div className="grid bg-[#fff] rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
+                    <h1 className='text-center font-medium p-2.5 border-b border-slate-200'>Search</h1>
                     <div>
-                        <div className='bg-[#fff] py-2.5 px-3.5'>
+                        <div className='py-2.5 px-3.5'>
                             <input type='text' placeholder='Search' ref={input}
                             className='w-full outline-none bg-slate-100 py-1.5 px-2.5 rounded-md' />
                         </div>
-                        <div className='bg-[#fff] grid content-start pb-2.5 aspect-square'>
+                        <div className='grid content-start pb-2.5 aspect-square'>
                             <h1 className="text-sm font-semibold px-3.5 pb-2 flex justify-between items-center">Recent <span className='text-xs text-blue-500 cursor-pointer'>Clear all</span></h1>
                             <User username='profile_1' name='Test Satu' />
                             <User username='profile_2' name='Test Dua' />

@@ -1,12 +1,29 @@
 import { useSession } from 'next-auth/react'
 import { BookmarkIcon, ChatBubbleBottomCenterIcon, ChevronLeftIcon, ChevronRightIcon, EllipsisHorizontalIcon, 
 FaceSmileIcon, HeartIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Post({item}) {
     const {data: session} = useSession()
+    const post = useRef()
+    const [left, setLeft] = useState(false)
+    const [right, setRight] = useState(false)
+
+    useEffect(() => {
+        slide()
+    }, [])
+
+    const scroll = (scrollOffset) => {
+        post.current.scrollLeft += scrollOffset;
+    }
+
+    const slide = () => {
+        post.current.scrollLeft > 0 ? setLeft(true) : setLeft(false)
+        post.current.scrollLeft < post.current.scrollWidth - post.current.clientWidth ? setRight(true) : setRight(false)
+    }
 
     return (
-        <div className='grid gap-y-3 py-5 bg-[#fff]'>
+        <div className='grid gap-y-3 py-5 border-b border-slate-200 last:border-b-0'>
             <div className='flex items-center gap-x-3 max-[470px]:px-3.5'>
             <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
             className='rounded-full aspect-square h-8 border border-slate-200 cursor-pointer' />
@@ -16,10 +33,20 @@ export default function Post({item}) {
             </div>
             <EllipsisHorizontalIcon className='w-7 cursor-pointer hover:text-slate-500' />
             </div>
-            <div className='overflow-x-auto rounded flex snap-mandatory snap-x slider'>
-                {item.asset.map((as, i) => 
-                    <img key={i} alt='post' className='w-full h-auto snap-center' src={as} />    
-                )}
+            <div className='relative'> 
+                <div className={`${!left && 'hidden'} absolute inset-y-0 left-3.5 grid place-content-center`}>
+                    <ChevronLeftIcon onClick={() => scroll(-post.current.clientWidth)}
+                    className='h-7 rounded-full p-1.5 bg-slate-200 hover:text-blue-500 cursor-pointer' />
+                </div>
+                <div className={`${!right && 'hidden'} absolute inset-y-0 right-3.5 grid place-content-center`}>
+                    <ChevronRightIcon onClick={() => scroll(post.current.clientWidth)}
+                    className='h-7 rounded-full p-1.5 bg-slate-200 hover:text-blue-500 cursor-pointer' />
+                </div>
+                <div ref={post} onScroll={() => slide()} className='overflow-x-auto rounded flex snap-x snap-mandatory slider'>
+                    {item.asset.map((as, i) => 
+                        <img key={i} alt='post' className='w-full aspect-square object-cover object-center snap-center' src={as} />    
+                    )}
+                </div>
             </div>
             <div className='flex justify-between gap-x-3.5 max-[470px]:px-3.5'>
             <div className='flex items-center gap-x-3.5'>
