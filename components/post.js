@@ -42,7 +42,7 @@ export default function Post({item}) {
                 </div>
                 <div ref={post} onScroll={() => slide()} className='overflow-x-auto rounded flex snap-x snap-mandatory slider'>
                     {item.asset.map((as, i) => 
-                        <img key={i} alt='post' className='w-full aspect-square object-cover object-center snap-center' src={as} />    
+                        <img key={i} alt='post' className='w-full aspect-square object-cover object-center snap-always snap-center' src={as} />    
                     )}
                 </div>
                 <div className={`${item.asset.length <= 1 && 'hidden'} absolute bottom-3.5 inset-x-0 flex justify-center pointer-events-none`}>
