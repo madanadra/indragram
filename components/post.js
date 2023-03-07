@@ -5,9 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function Post({item}) {
     const {data: session} = useSession()
-    const post = useRef()
-    const [left, setLeft] = useState(false)
-    const [right, setRight] = useState(false)
+    const post = useRef(0)
+    const [curr, setCurr] = useState(0)
 
     useEffect(() => {
         slide()
@@ -18,8 +17,7 @@ export default function Post({item}) {
     }
 
     const slide = () => {
-        post.current.scrollLeft > 0 ? setLeft(true) : setLeft(false)
-        post.current.scrollLeft < post.current.scrollWidth - post.current.clientWidth ? setRight(true) : setRight(false)
+        setCurr(Math.round(post.current.scrollLeft / post.current.clientWidth))
     }
 
     return (
@@ -34,17 +32,22 @@ export default function Post({item}) {
             <EllipsisHorizontalIcon className='w-7 cursor-pointer hover:text-slate-500' />
             </div>
             <div className='relative'> 
-                <div className={`${!left && 'hidden'} absolute inset-y-0 left-3.5 grid place-content-center`}>
-                    <ChevronLeftIcon onClick={() => scroll(-post.current.clientWidth)}
-                    className='h-7 rounded-full p-1.5 bg-slate-200 hover:text-blue-500 cursor-pointer' />
+                <div className={`${curr === 0 && 'hidden'} absolute inset-y-0 left-3.5 grid place-content-center`}>
+                    <ChevronLeftIcon onClick={() => scroll(- post.current.clientWidth)}
+                    className='h-7 rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-500' />
                 </div>
-                <div className={`${!right && 'hidden'} absolute inset-y-0 right-3.5 grid place-content-center`}>
+                <div className={`${curr === item.asset.length-1 && 'hidden'} absolute inset-y-0 right-3.5 grid place-content-center`}>
                     <ChevronRightIcon onClick={() => scroll(post.current.clientWidth)}
-                    className='h-7 rounded-full p-1.5 bg-slate-200 hover:text-blue-500 cursor-pointer' />
+                    className='h-7 rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-500' />
                 </div>
                 <div ref={post} onScroll={() => slide()} className='overflow-x-auto rounded flex snap-x snap-mandatory slider'>
                     {item.asset.map((as, i) => 
                         <img key={i} alt='post' className='w-full aspect-square object-cover object-center snap-center' src={as} />    
+                    )}
+                </div>
+                <div className={`${item.asset.length <= 1 && 'hidden'} absolute bottom-3.5 inset-x-0 flex justify-center`}>
+                    {item.asset.map((_, i) => 
+                        <span key={i} className={`leading-none ${curr === i ? 'text-blue-500' : 'text-slate-100 text-opacity-50'}`}>&bull;</span>
                     )}
                 </div>
             </div>
