@@ -45,7 +45,7 @@ export default function Post({item}) {
                         <img key={i} alt='post' className='w-full aspect-square object-cover object-center snap-center' src={as} />    
                     )}
                 </div>
-                <div className={`${item.asset.length <= 1 && 'hidden'} absolute bottom-3.5 inset-x-0 flex justify-center`}>
+                <div className={`${item.asset.length <= 1 && 'hidden'} absolute bottom-3.5 inset-x-0 flex justify-center pointer-events-none`}>
                     {item.asset.map((_, i) => 
                         <span key={i} className={`leading-none ${curr === i ? 'text-blue-500' : 'text-slate-100 text-opacity-50'}`}>&bull;</span>
                     )}
