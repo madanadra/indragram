@@ -21,7 +21,7 @@ export default function Post({item}) {
     }
 
     return (
-        <div className='grid gap-y-2 py-5 max-[470px]:px-3.5 border-b border-slate-200 last:border-b-0'>
+        <div className='grid gap-y-2 py-3.5 max-[470px]:px-3.5 border-b border-slate-200 last:border-b-0'>
             <div className='flex items-center gap-x-3'>
                 <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
                 className='rounded-full aspect-square h-8 border border-slate-200 cursor-pointer' />
