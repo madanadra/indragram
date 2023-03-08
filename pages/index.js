@@ -15,7 +15,7 @@ import Post from '../components/post'
 import Footermenu from '../components/footermenu';
 
 export default function Home() {
-  const {data: session} = useSession()
+  const {data: session, status} = useSession()
   const router = useRouter()
   const [more, setMore] = useState(false)
   const [create, setCreate] = useState(false)
@@ -65,7 +65,7 @@ export default function Home() {
   }, [session]);
 
   return (
-    session &&
+    status === 'authenticated' &&
     <Layout title='Home'>
       <div className='flex flex-col md:flex-row'>
         <Leftbar setMore={setMore} setCreate={setCreate} setNotifications={setNotifications} setSearch={setSearch} />

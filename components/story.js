@@ -35,7 +35,7 @@ export default function Story() {
     }
 
     return (
-        <div className='relative grid pb-5'>
+        <div className='relative grid'>
             <div className={`${!left && 'hidden'} absolute h-16 top-0 left-3.5 grid place-content-center pointer-events-none`}>
                 <ChevronLeftIcon onClick={() => scroll(- story.current.clientWidth / 2)}
                 className='h-7 rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer pointer-events-auto text-slate-500' />

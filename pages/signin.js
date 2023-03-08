@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
 export default function Signin() {
-    const {data: session} = useSession()
+    const {data: session, status} = useSession()
     const router = useRouter()
     const [showPass, setShowPass] = useState(false)
 
@@ -15,7 +15,7 @@ export default function Signin() {
     }, [session]);
 
     return (
-        !session &&
+        status === 'unauthenticated' &&
         <Layout title='Sign in'>
             <div className="grid gap-y-5 py-5 px-3.5 md:py-9 md:px-8 w-full max-w-sm mx-auto">
                 <h1 className='text-3xl text-center font-medium font-logo mb-8 leading-none'>Indragram</h1>
