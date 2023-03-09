@@ -2,11 +2,13 @@ import { useSession } from 'next-auth/react'
 import { BookmarkIcon, ChatBubbleBottomCenterIcon, ChevronLeftIcon, ChevronRightIcon, EllipsisHorizontalIcon, 
 FaceSmileIcon, HeartIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
 import { useEffect, useRef, useState } from 'react';
+import Postmenu from './postmenu';
 
 export default function Post({item}) {
     const {data: session} = useSession()
     const post = useRef(0)
     const [curr, setCurr] = useState(0)
+    const [postmenu, setPostmenu] = useState(false)
 
     useEffect(() => {
         slide()
@@ -29,7 +31,7 @@ export default function Post({item}) {
                     <h1 className=' font-semibold cursor-pointer hover:text-slate-500'>{item.name}</h1>
                     <h1 className='text-slate-500'>&bull; {item.time}</h1>
                 </div>
-                <EllipsisHorizontalIcon className='w-7 cursor-pointer hover:text-slate-500' />
+                <EllipsisHorizontalIcon className='w-7 cursor-pointer hover:text-slate-500' onClick={() => setPostmenu(true)} />
             </div>
             <div className='relative max-[470px]:-mx-3.5'> 
                 <div className={`${curr === 0 && 'hidden'} absolute inset-y-0 left-3.5 grid place-content-center`}>
@@ -69,6 +71,7 @@ export default function Post({item}) {
                 <input type='text' placeholder='Add a comment...' className='w-full outline-0 text-sm pr-5' />
                 <FaceSmileIcon className='h-3.5 text-slate-500 absolute right-0 top-1.5 cursor-pointer' />
             </div>
+            <Postmenu postmenu={postmenu} setPostmenu={setPostmenu} />
         </div>
     )
 } 
