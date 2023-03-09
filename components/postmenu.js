@@ -1,7 +1,7 @@
 export default function Postmenu({postmenu, setPostmenu}) {
-    const Menu = ({name, red}) => {
+    const Menu = ({name, red, click}) => {
         return (
-            <h1 className={`${red && 'text-red-500 font-semibold'} font-light text-sm border-b border-slate-200 last:border-b-0 text-center p-3.5 hover:bg-slate-100 cursor-pointer`}>{name}</h1>
+            <h1 className={`${red && 'text-red-500 font-semibold'} font-light text-sm border-b border-slate-200 last:border-b-0 text-center p-3.5 hover:bg-slate-100 cursor-pointer`} onClick={click}>{name}</h1>
         )
     }
 
@@ -18,7 +18,7 @@ export default function Postmenu({postmenu, setPostmenu}) {
                     <Menu name='Copy link' />
                     <Menu name='Embed' />
                     <Menu name='About this account' />
-                    <Menu name='cancel' />
+                    <Menu name='Cancel' click={() => setPostmenu(false)} />
                 </div>
             </div>
         </div>
