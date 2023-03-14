@@ -1,14 +1,12 @@
-import { useSession } from 'next-auth/react'
 import { BookmarkIcon, ChatBubbleBottomCenterIcon, ChevronLeftIcon, ChevronRightIcon, EllipsisHorizontalIcon, 
 FaceSmileIcon, HeartIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
-import { useEffect, useRef, useState } from 'react';
-import Postmenu from './postmenu';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { IndragramContext } from '../store/context';
 
 export default function Post({item}) {
-    const {data: session} = useSession()
+    const {dispatch} = useContext(IndragramContext)
     const post = useRef(0)
     const [curr, setCurr] = useState(0)
-    const [postmenu, setPostmenu] = useState(false)
 
     useEffect(() => {
         slide()
@@ -25,22 +23,22 @@ export default function Post({item}) {
     return (
         <div className='grid gap-y-2 py-3.5 max-[470px]:px-3.5 border-b border-slate-200 last:border-b-0'>
             <div className='flex items-center gap-x-3'>
-                <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer"
+                <img src={item.image} alt='Avatar' referrerPolicy="no-referrer"
                 className='rounded-full aspect-square h-8 border border-slate-200 cursor-pointer' />
                 <div className='grow flex items-center gap-x-1 text-sm'>
                     <h1 className=' font-semibold cursor-pointer hover:text-slate-500'>{item.name}</h1>
                     <h1 className='text-slate-500'>&bull; {item.time}</h1>
                 </div>
-                <EllipsisHorizontalIcon className='w-7 cursor-pointer hover:text-slate-500' onClick={() => setPostmenu(true)} />
+                <EllipsisHorizontalIcon className='w-7 cursor-pointer hover:text-slate-500' onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'postmenu'})} />
             </div>
             <div className='relative max-[470px]:-mx-3.5'> 
                 <div className={`${curr === 0 && 'hidden'} absolute inset-y-0 left-3.5 grid place-content-center`}>
                     <ChevronLeftIcon onClick={() => scroll(- post.current.clientWidth)}
-                    className='h-7 rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-500' />
+                    className='h-7 rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-700 shadow' />
                 </div>
-                <div className={`${curr === item.asset.length-1 && 'hidden'} absolute inset-y-0 right-3.5 grid place-content-center`}>
+                <div className={`${curr === item.asset.length - 1 && 'hidden'} absolute inset-y-0 right-3.5 grid place-content-center`}>
                     <ChevronRightIcon onClick={() => scroll(post.current.clientWidth)}
-                    className='h-7 rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-500' />
+                    className='h-7 rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-700 shadow' />
                 </div>
                 <div ref={post} onScroll={() => slide()} className='overflow-x-auto rounded flex snap-x snap-mandatory slider'>
                     {item.asset.map((as, i) => 
@@ -49,7 +47,7 @@ export default function Post({item}) {
                 </div>
                 <div className={`${item.asset.length <= 1 && 'hidden'} absolute bottom-3.5 inset-x-0 flex justify-center pointer-events-none`}>
                     {item.asset.map((_, i) => 
-                        <span key={i} className={`leading-none ${curr === i ? 'text-blue-500' : 'text-slate-100 text-opacity-50'}`}>&bull;</span>
+                        <span key={i} className={`leading-none shadow ${curr === i ? 'text-blue-500' : 'text-slate-100 text-opacity-50'}`}>&bull;</span>
                     )}
                 </div>
             </div>
@@ -71,7 +69,6 @@ export default function Post({item}) {
                 <input type='text' placeholder='Add a comment...' className='w-full outline-0 text-sm pr-5' />
                 <FaceSmileIcon className='h-3.5 text-slate-500 absolute right-0 top-1.5 cursor-pointer' />
             </div>
-            <Postmenu postmenu={postmenu} setPostmenu={setPostmenu} />
         </div>
     )
 } 

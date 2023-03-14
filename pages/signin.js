@@ -1,18 +1,19 @@
-import { useSession, signIn } from 'next-auth/react'
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react'
+import { signIn } from 'next-auth/react'
+import { useState, useEffect } from 'react'
 import Layout from "../components/layout";
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export default function Signin() {
-    const {data: session, status} = useSession()
-    const router = useRouter()
     const [showPass, setShowPass] = useState(false)
+    const {status} = useSession()
+    const router = useRouter()
 
     useEffect(() => {
-        session &&
+        status === 'authenticated' &&
         router.push('/')
-    }, [session]);
+    })
 
     return (
         status === 'unauthenticated' &&

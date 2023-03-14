@@ -1,7 +1,7 @@
-export default function Footermenu({name}) {
+export default function Footermenu({item}) {
     return (
         <>
-            <span className='cursor-pointer hover:underline'>{name}</span>
+            <span className='cursor-pointer hover:underline'>{item}</span>
             <span className="last-of-type:hidden"> &sdot; </span>
         </>
     )
