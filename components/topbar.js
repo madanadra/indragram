@@ -1,4 +1,5 @@
-import { Bars3Icon, HeartIcon, MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { HiOutlineBars3, HiOutlineMagnifyingGlass, HiOutlineHeart, HiOutlinePlus,
+HiBars3, HiMagnifyingGlass, HiHeart, HiPlus} from 'react-icons/hi2'
 import { useContext } from 'react'
 import { IndragramContext } from '../store/context'
 
@@ -7,19 +8,35 @@ export default function Topbar() {
 
     return (
         <div className="md:hidden bg-[#fff] h-[50px] flex items-center gap-x-4 border-b border-slate-200 p-3.5 fixed top-0 w-full z-10">
-            <Bars3Icon className={`h-6 active:h-[23px] active:text-slate-500 active:ml-px
-            ${state.modal === 'more' && 'text-blue-500'}`} 
-            onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'more'})} />
+            {state.modal === 'more' ? 
+                <HiBars3 className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' 
+                onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'more'})} />
+            :
+                <HiOutlineBars3 className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' 
+                onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'more'})} />
+            }
             <h1 className="font-logo text-xl font-semibold grow">Indragram</h1>
-            <MagnifyingGlassIcon className={`h-6 active:h-[23px] active:text-slate-500 active:ml-px
-            ${state.modal === 'search' && 'text-blue-500'}`} 
-            onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'search'})} />
-            <HeartIcon className={`h-6 active:h-[23px] active:text-slate-500 active:ml-px
-            ${state.modal === 'notifications' && 'text-blue-500'}`} 
-            onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'notifications'})} />
-            <PlusIcon className={`h-6 active:h-[23px] active:text-slate-500 active:ml-px
-            ${state.modal === 'create' && 'text-blue-500'}`} 
-            onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'create'})} />
+            {state.modal === 'search' ? 
+                <HiMagnifyingGlass className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' 
+                onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'search'})} />
+            :
+                <HiOutlineMagnifyingGlass className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' 
+                onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'search'})} />
+            }
+            {state.modal === 'notifications' ? 
+                <HiHeart className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' 
+                onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'notifications'})} />
+            :
+                <HiOutlineHeart className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' 
+                onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'notifications'})} />
+            }
+            {state.modal === 'create' ? 
+                <HiPlus className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' 
+                onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'create'})} />
+            :
+                <HiOutlinePlus className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' 
+                onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'create'})} />
+            }
         </div>
     )
 }

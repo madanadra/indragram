@@ -1,5 +1,5 @@
-import { BookmarkIcon, ChatBubbleBottomCenterIcon, ChevronLeftIcon, ChevronRightIcon, EllipsisHorizontalIcon, 
-FaceSmileIcon, HeartIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import { HiEllipsisHorizontal, HiChevronLeft, HiChevronRight, HiOutlineHeart, 
+HiOutlineChatBubbleLeft, HiOutlinePaperAirplane, HiOutlineBookmark, HiOutlineFaceSmile } from "react-icons/hi2";
 import { useContext, useEffect, useRef, useState } from 'react';
 import { IndragramContext } from '../store/context';
 
@@ -26,19 +26,19 @@ export default function Post({item}) {
                 <img src={item.image} alt='Avatar' referrerPolicy="no-referrer"
                 className='rounded-full aspect-square h-8 border border-slate-200 cursor-pointer' />
                 <div className='grow flex items-center gap-x-1 text-sm'>
-                    <h1 className=' font-semibold cursor-pointer hover:text-slate-500'>{item.name}</h1>
+                    <h1 className=' font-semibold cursor-pointer hover:text-slate-500'>{item.username}</h1>
                     <h1 className='text-slate-500'>&bull; {item.time}</h1>
                 </div>
-                <EllipsisHorizontalIcon className='w-7 cursor-pointer hover:text-slate-500' onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'postmenu'})} />
+                <HiEllipsisHorizontal className='text-[28px] cursor-pointer hover:text-slate-500' onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'postmenu'})} />
             </div>
             <div className='relative max-[470px]:-mx-3.5'> 
                 <div className={`${curr === 0 && 'hidden'} absolute inset-y-0 left-3.5 grid place-content-center`}>
-                    <ChevronLeftIcon onClick={() => scroll(- post.current.clientWidth)}
-                    className='h-7 rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-700 shadow' />
+                    <HiChevronLeft onClick={() => scroll(- post.current.clientWidth)}
+                    className='text-[28px] rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-700 shadow' />
                 </div>
                 <div className={`${curr === item.asset.length - 1 && 'hidden'} absolute inset-y-0 right-3.5 grid place-content-center`}>
-                    <ChevronRightIcon onClick={() => scroll(post.current.clientWidth)}
-                    className='h-7 rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-700 shadow' />
+                    <HiChevronRight onClick={() => scroll(post.current.clientWidth)}
+                    className='text-[28px] rounded-full p-1.5 bg-slate-100 bg-opacity-50 hover:text-blue-500 cursor-pointer text-slate-700 shadow' />
                 </div>
                 <div ref={post} onScroll={() => slide()} className='overflow-x-auto rounded flex snap-x snap-mandatory slider'>
                     {item.asset.map((as, i) => 
@@ -52,22 +52,22 @@ export default function Post({item}) {
                 </div>
             </div>
             <div className='flex justify-between gap-x-3.5'>
-            <div className='flex items-center gap-x-3.5'>
-                <HeartIcon className='h-7 cursor-pointer hover:text-slate-500' />
-                <ChatBubbleBottomCenterIcon className='h-7 cursor-pointer hover:text-slate-500' />
-                <PaperAirplaneIcon className='h-7 cursor-pointer hover:text-slate-500' />
+                <div className='flex items-center gap-x-3.5'>
+                    <HiOutlineHeart className='text-[28px] font-bold cursor-pointer hover:text-slate-500' />
+                    <HiOutlineChatBubbleLeft className='text-[28px] cursor-pointer hover:text-slate-500' />
+                    <HiOutlinePaperAirplane className='text-[28px] cursor-pointer hover:text-slate-500' />
+                </div>
+                <HiOutlineBookmark className='text-[28px] cursor-pointer hover:text-slate-500' />
             </div>
-            <BookmarkIcon className='h-7 cursor-pointer hover:text-slate-500' />
-            </div>
-            <h1 className='text-sm font-semibold leading-none'>{item.like} likes</h1>
+            <h1 className='text-sm font-semibold leading-none'>{item.like.toLocaleString()} likes</h1>
             <h1 className='text-sm  cursor-pointer font-semibold -my-1'>
-                {item.name}
+                {item.username}
                 <span className='font-normal cursor-text'> {item.caption}</span>
             </h1>
-            <h1 className='cursor-pointer text-sm text-slate-500 w-max'>View all {item.comment} comments</h1>
+            <h1 className='cursor-pointer text-sm text-slate-500 w-max'>View all {item.comment.toLocaleString()} comments</h1>
             <div className='relative -my-1'>
                 <input type='text' placeholder='Add a comment...' className='w-full outline-0 text-sm pr-5' />
-                <FaceSmileIcon className='h-3.5 text-slate-500 absolute right-0 top-1.5 cursor-pointer' />
+                <HiOutlineFaceSmile className='text-sm text-slate-500 absolute right-0 top-1.5 cursor-pointer' />
             </div>
         </div>
     )

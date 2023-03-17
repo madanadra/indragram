@@ -1,4 +1,4 @@
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { HiXMark } from 'react-icons/hi2'
 import { useEffect, useRef } from 'react'
 import { IndragramContext } from '../store/context'
 import { useContext } from 'react'
@@ -21,7 +21,7 @@ export default function Search() {
                     <h1>{username}</h1>
                     <h1 className='text-slate-500'>{name}</h1>
                 </div>
-                <XMarkIcon className='h-5 text-slate-500' />
+                <HiXMark className='h-5 text-slate-500' />
             </div>
         )
     }

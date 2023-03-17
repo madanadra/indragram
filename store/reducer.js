@@ -147,7 +147,6 @@ export const initialState = {
     footermenu : [
         'About', 'Help', 'API', 'Jobs', 'Privacy', 'Terms', 'Locations', 'Language', 'Indra verified'
     ],
-    menu: 'home'
 };
   
 export const reducer = (state, action) => {
@@ -156,11 +155,6 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 modal: action.modal
-            };
-        case 'CHANGE_MENU':
-            return {
-                ...state,
-                menu: action.menu
             };
         default:
             return state;

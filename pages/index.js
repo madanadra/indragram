@@ -28,7 +28,7 @@ export default function Home() {
             <Post key={i} item={item} />  
           )}
         </div>
-        <div className='grow hidden md:grid content-start'>
+        <div className='grow hidden lg:grid content-start'>
           <div className='flex gap-x-3 items-center'>
             <img src={session.user.image} alt='avatar' referrerPolicy='no-referrer' 
             className='rounded-full h-16 aspect-square border border-slate-200 cursor-pointer' />

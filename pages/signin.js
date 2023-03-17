@@ -1,7 +1,7 @@
 import { signIn } from 'next-auth/react'
 import { useState, useEffect } from 'react'
 import Layout from "../components/layout";
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { HiOutlineEye, HiOutlineEyeSlash } from 'react-icons/hi2';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
@@ -44,8 +44,8 @@ export default function Signin() {
                             <div onClick={() => setShowPass(!showPass)}
                             className='p-1.5 rounded-full aspect-square pointer-events-auto cursor-pointer hover:bg-slate-100'>
                                 {showPass 
-                                ? <EyeIcon className='h-4 text-slate-500' />
-                                : <EyeSlashIcon className='h-4 text-slate-500' />
+                                ? <HiOutlineEye className='h-4 text-slate-500' />
+                                : <HiOutlineEyeSlash className='h-4 text-slate-500' />
                                 }
                             </div>
                         </div>
