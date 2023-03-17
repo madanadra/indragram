@@ -27,7 +27,7 @@ export default function Notifications() {
                     <div className='grid content-start py-2.5 aspect-square'>
                         <h1 className="text-sm font-semibold px-3.5 pb-2">Earlier</h1>
                         {user.filter((_, i) => i <= 3).map((item, i) => 
-                            <User image={item.image} username={item.username} time={`${i+1}h`} follow={i === 2 && true} />
+                            <User key={i} image={item.image} username={item.username} time={`${i+1}h`} follow={i === 2 && true} />
                         )}
                     </div>
                 </div>
