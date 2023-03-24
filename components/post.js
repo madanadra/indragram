@@ -3,11 +3,11 @@ HiOutlineChatBubbleLeft, HiOutlinePaperAirplane, HiOutlineBookmark, HiOutlineFac
 import { useContext, useEffect, useRef, useState } from 'react';
 import { IndragramContext } from '../store/context';
 
-export default function Post({item}) {
-    const {dispatch} = useContext(IndragramContext)
+export default function Post({item, view}) {
+    const {state, dispatch} = useContext(IndragramContext)
     const post = useRef(0)
     const [curr, setCurr] = useState(0)
-
+    
     useEffect(() => {
         slide()
     }, [])
@@ -22,11 +22,12 @@ export default function Post({item}) {
 
     return (
         <div className='grid gap-y-2 py-3.5 max-[470px]:px-3.5 border-b border-slate-200 last:border-b-0'>
+            {console.log(view)}
             <div className='flex items-center gap-x-3'>
                 <img src={item.image} alt='Avatar' referrerPolicy="no-referrer"
                 className='rounded-full aspect-square h-8 border border-slate-200 cursor-pointer' />
                 <div className='grow flex items-center gap-x-1 text-sm'>
-                    <h1 className=' font-semibold cursor-pointer hover:text-slate-500'>{item.username}</h1>
+                    <h1 className='font-semibold cursor-pointer hover:text-slate-500'>{item.username}</h1>
                     <h1 className='text-slate-500'>&bull; {item.time}</h1>
                 </div>
                 <HiEllipsisHorizontal className='text-[28px] cursor-pointer hover:text-slate-500' onClick={() => dispatch({type: 'CHANGE_MODAL', modal: 'postmenu'})} />
@@ -42,8 +43,9 @@ export default function Post({item}) {
                 </div>
                 <div ref={post} onScroll={() => slide()} className='overflow-x-auto rounded flex snap-x snap-mandatory slider'>
                     {item.asset.map((as, i) => 
-                        <img key={i} alt='post' className='w-full aspect-square object-cover object-center snap-always snap-center' src={as} />    
-                    )}
+                        <img key={i} alt='post' src={as}
+                        className='w-full aspect-square object-cover object-center snap-always snap-center bg-[#000]' />
+                    )}       
                 </div>
                 <div className={`${item.asset.length <= 1 && 'hidden'} absolute bottom-3.5 inset-x-0 flex justify-center pointer-events-none`}>
                     {item.asset.map((_, i) => 
@@ -51,6 +53,7 @@ export default function Post({item}) {
                     )}
                 </div>
             </div>
+            
             <div className='flex justify-between gap-x-3.5'>
                 <div className='flex items-center gap-x-3.5'>
                     <HiOutlineHeart className='text-[28px] font-bold cursor-pointer hover:text-slate-500' />

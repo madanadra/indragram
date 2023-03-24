@@ -1,7 +1,7 @@
 import { IoLogoInstagram } from 'react-icons/io5'
 import { HiOutlineHome, HiOutlineMagnifyingGlass, HiOutlineMap, 
 HiOutlineFilm, HiOutlineChatBubbleLeft, HiOutlineHeart, HiOutlinePlus, HiOutlineBars3, 
-HiHome, HiMagnifyingGlass, HiMap, HiFilm, HiChatBubbleLeft, HiHeart, HiPlus, HiBars3,  } from 'react-icons/hi2'
+HiHome, HiMagnifyingGlass, HiMap, HiFilm, HiChatBubbleLeft, HiHeart, HiPlus, HiBars3 } from 'react-icons/hi2'
 import { useContext } from 'react'
 import { IndragramContext } from '../store/context'
 import { useSession } from 'next-auth/react'
@@ -16,10 +16,10 @@ export default function Leftbar() {
         return (
             <div onClick={click} 
             className='rounded-full p-3 cursor-pointer hover:bg-slate-100 flex items-center gap-x-3.5 group'>
-                <div className='h-[28px] p-px group-hover:p-0'>
+                <div className='h-[28px] aspect-square p-px group-hover:p-0'>
                     {selected ? filled : icon}
                 </div>
-                <h1 className={`hidden xl:grid ${selected ? 'font-bold' : 'font-light'}`}>{title}</h1>
+                <h1 className={`hidden xl:grid ${selected && 'font-bold'}`}>{title}</h1>
             </div>
         )
     }
@@ -54,7 +54,10 @@ export default function Leftbar() {
                 selected={!state.modal && router.pathname === '/explore' && true} />
                 
                 <Menu title='Reels'
-                icon={<HiOutlineFilm className='h-full w-full' />} />
+                icon={<HiOutlineFilm className='h-full w-full' />}
+                filled={<HiFilm className='h-full w-full' />} 
+                click={() => router.push('/reels')}
+                selected={!state.modal && router.pathname === '/reels' && true} />
                 
                 <Menu title='Messages' 
                 icon={<HiOutlineChatBubbleLeft className='h-full w-full' />} />

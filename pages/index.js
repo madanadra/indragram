@@ -7,25 +7,27 @@ import Footermenu from '../components/footermenu';
 import { IndragramContext } from '../store/context';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { useInView } from 'react-intersection-observer';
 
 export default function Home() {
   const {state} = useContext(IndragramContext)
   const {data: session, status} = useSession()
   const router = useRouter()
+  const {ref, inView} = useInView()
 
   useEffect(() => {
     status === 'unauthenticated' &&
     router.push('/signin')
-  })
+  }, [])
 
   return (
     status === 'authenticated' &&
     <Layout title='Home'>
-      <div className="grow flex justify-center gap-x-14 max-w-[910px] mx-auto py-[70px] md:py-10 md:px-7">
+      <div ref={ref} className="grow flex justify-center gap-x-14 max-w-[910px] mx-auto py-[70px] md:py-10 md:px-7">
         <div className='w-full max-w-[470px] grid content-start'>
           <Story />
-          {state.post.map((item, i) => 
-            <Post key={i} item={item} />  
+          {state.post.filter(item => 'asset' in item).map((item, i) => 
+            <Post key={i} item={item} view={inView} />  
           )}
         </div>
         <div className='grow hidden lg:grid content-start'>

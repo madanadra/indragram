@@ -26,7 +26,14 @@ export default function Bottombar() {
                 <HiOutlineMap className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px'
                 onClick={() => router.push('/explore')} />
             }
-            <HiOutlineFilm className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' />
+            {!state.modal && router.pathname === '/reels' ?
+                <HiFilm className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px'
+                onClick={() => router.push('/reels')} />
+            :
+                <HiOutlineFilm className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px'
+                onClick={() => router.push('/reels')} />
+            }
+            
             <HiOutlineChatBubbleLeft className='text-2xl active:text-[23px] active:text-slate-500 active:ml-px' />
             <img src={session.user.image} alt='Avatar' referrerPolicy="no-referrer" 
             className='h-6 active:h-[23px] active:ml-px aspect-square rounded-full border border-slate-400 p-px' />

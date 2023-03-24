@@ -20,7 +20,7 @@ export default function Layout({title, children}) {
                 <title>{pageTitle}</title>
             </Head>
             {status === 'authenticated' ?
-                <main className="font-main text-[#000] bg-[#fff] flex flex-col md:flex-row">
+                <main className="font-main text-neutral-800 bg-[#fff] flex flex-col md:flex-row">
                     <Leftbar />
                     <Topbar />
                     {children}
@@ -32,7 +32,7 @@ export default function Layout({title, children}) {
                     <Postmenu />
                 </main>
             : status === 'unauthenticated' ?
-                <main className="font-main text-[#000] bg-[#fff]">
+                <main className="font-main text-neutral-800 bg-[#fff]">
                     {children}
                 </main>
             : []

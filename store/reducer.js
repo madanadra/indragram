@@ -91,9 +91,9 @@ export const initialState = {
             ...user[0],
             time: '5m',
             asset: [
-                'https://cdn.wallpapersafari.com/8/51/mwvBGY.jpg', 
+                'https://cdn.wallpapersafari.com/8/51/mwvBGY.jpg',
                 'https://c4.wallpaperflare.com/wallpaper/385/361/317/digital-digital-art-artwork-blue-purple-hd-wallpaper-preview.jpg',
-                'https://images.squarespace-cdn.com/content/v1/522ee959e4b0186bd83cda45/1619075956044-0XT3PBRXBYEG7CLT4O8Q/10240-6M.jpg'
+                'https://images.squarespace-cdn.com/content/v1/522ee959e4b0186bd83cda45/1619075956044-0XT3PBRXBYEG7CLT4O8Q/10240-6M.jpg',
             ],
             like: 100,
             caption: '',
@@ -101,20 +101,52 @@ export const initialState = {
         },
         {
             ...user[1],
-            time: '1h',
-            asset: [
-                'https://c4.wallpaperflare.com/wallpaper/385/361/317/digital-digital-art-artwork-blue-purple-hd-wallpaper-preview.jpg',
-                'https://images.squarespace-cdn.com/content/v1/522ee959e4b0186bd83cda45/1619075956044-0XT3PBRXBYEG7CLT4O8Q/10240-6M.jpg'
-            ],
-            like: 1029,
+            audio: {
+                title: 'Merindukanmu',
+                artist: 'Pelin',
+                album: 'https://is4-ssl.mzstatic.com/image/thumb/Music116/v4/ea/2a/cf/ea2acfb8-4e0b-8420-31b7-2fb3a1f05599/cover.jpg/1200x1200bf-60.jpg'
+            },
+            reels: 'https://v1.pinimg.com/videos/mc/720p/f9/8f/22/f98f22fe9e1e6b9655ec9ea6672ad761.mp4',
+            like: 10092,
             caption: 'Create vital space by giving a new stimulation through sensible design and creative fabric sensation! Create vital space by giving a new stimulation through sensible design and creative fabric sensation.',
             comment: 200
         },
         {
             ...user[2],
+            time: '1h',
+            asset: [
+                'https://c4.wallpaperflare.com/wallpaper/385/361/317/digital-digital-art-artwork-blue-purple-hd-wallpaper-preview.jpg',
+                'https://cdn.wallpapersafari.com/8/51/mwvBGY.jpg',
+            ],
+            like: 1029,
+            caption: 'Create vital space by giving a new stimulation through sensible design and creative fabric sensation! Create vital space by giving a new stimulation through sensible design and creative fabric sensation.',
+            comment: 2000
+        },
+        {
+            ...user[3],
+            audio: null,
+            reels: 'https://v1.pinimg.com/videos/mc/720p/98/98/f7/9898f74efc0b9e7b19b0ae91c22dfcd1.mp4',
+            like: 2900,
+            caption: 'Menerjemahkan antara 108 bahasa dengan mengetik',
+            comment: 1000
+        },
+        {
+            ...user[4],
+            audio: {
+                title: 'Hero',
+                artist: 'Cash Cash',
+                album: 'https://i1.sndcdn.com/artworks-HZ1mBV0HG3iZ-0-t500x500.jpg'
+            },
+            reels: 'https://v1.pinimg.com/videos/mc/720p/83/4c/0e/834c0e797dd9663c85199b7af780ccb0.mp4',
+            like: 29,
+            caption: 'Compare customer ratings, see screenshots and learn more about Google Translate.',
+            comment: 205
+        },
+        {
+            ...user[5],
             time: '10w',
             asset: [
-                'https://cdn.wallpapersafari.com/8/51/mwvBGY.jpg'
+                'https://cdn.wallpapersafari.com/8/51/mwvBGY.jpg',
             ],
             like: 102900,
             caption: 'Create vital space by giving a new stimulation through sensible design and creative fabric sensation.',
@@ -147,6 +179,7 @@ export const initialState = {
     footermenu : [
         'About', 'Help', 'API', 'Jobs', 'Privacy', 'Terms', 'Locations', 'Language', 'Indra verified'
     ],
+    audio: false
 };
   
 export const reducer = (state, action) => {
@@ -155,6 +188,11 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 modal: action.modal
+            };
+        case 'SWITCH_AUDIO':
+            return {
+                ...state,
+                audio: action.audio
             };
         default:
             return state;

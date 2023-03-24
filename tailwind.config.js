@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'logo': 'Sofia, cursive',
-      'main': 'Inter, sans-serif',
+      'main': 'Segoe UI',
     },
     extend: {},
   },

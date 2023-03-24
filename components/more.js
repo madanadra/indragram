@@ -7,7 +7,7 @@ export default function More() {
 
     const Menu = ({name, click}) => {
         return (
-            <h1 className="font-light border-b border-slate-200 last:border-b-0 text-center p-3.5 hover:bg-slate-100 cursor-pointer" onClick={click}>{name}</h1>
+            <h1 className="border-b border-slate-200 last:border-b-0 text-center p-3.5 hover:bg-slate-100 cursor-pointer" onClick={click}>{name}</h1>
         )
     }
 
