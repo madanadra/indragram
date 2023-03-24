@@ -18,7 +18,7 @@ export default function Home() {
   useEffect(() => {
     status === 'unauthenticated' &&
     router.push('/signin')
-  }, [])
+  }, [status])
 
   return (
     status === 'authenticated' &&

@@ -15,7 +15,7 @@ export default function Reels() {
     useEffect(() => {
         status === 'unauthenticated' &&
         router.push('/signin')
-    }, [])
+    }, [status])
 
     const slide = () => {
         const value = Math.round(reels.current.scrollTop / reels.current.clientHeight)

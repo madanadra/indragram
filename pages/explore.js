@@ -13,7 +13,7 @@ export default function Explore() {
     useEffect(() => {
         status === 'unauthenticated' &&
         router.push('/signin')
-    }, [])
+    }, [status])
 
     return (
         status === 'authenticated' &&
