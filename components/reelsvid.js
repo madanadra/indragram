@@ -44,23 +44,23 @@ export default function Reelsvid({curr, item}) {
                 <source src={item.reels} type="video/mp4" />
             </video>
             <div className='flex items-end gap-x-2 absolute inset-x-0 bottom-0 p-4 pointer-events-none'>
-                <div className='grid gap-y-3'>
+                <div className='grid grow gap-y-2 overflow-hidden'>
                     <div className='flex gap-x-3 items-center'>
                         <img src={item.image} alt='User Photo' 
                         className='rounded-full w-8 aspect-square' />
-                        <h1 className='font-semibold text-sm truncate'>
-                            {item.username}
-                        </h1>
+                        <h1 className='font-semibold text-sm truncate'>{item.username}</h1>
                         <span className='-mx-1.5'>&bull;</span>
                         <h1 className='font-semibold text-sm'>
                             Follow
                         </h1>
                     </div>
                     <h1 className={`text-sm ${trunc && 'truncate'} pointer-events-auto`} onClick={() => setTrunc(!trunc)}>{item.caption}</h1>
-                    <h1 className='text-sm flex gap-x-1 items-center'>
-                        <HiMusicalNote />
-                        {item.audio ? item.audio.title : item.username} &middot; {item.audio ? item.audio.artist : 'Original audio'}
-                    </h1>
+                    <div className='flex gap-x-1 items-center'>
+                        <div><HiMusicalNote /></div>
+                        <div className='grid'>
+                            <h1 className='text-sm truncate'>{item.audio ? item.audio.title : item.username} &middot; {item.audio ? item.audio.artist : 'Original audio'}</h1>
+                        </div>
+                    </div>
                 </div>
                 <div className='grid gap-y-3 justify-items-center'>
                     <div className='grid gap-y-1 justify-items-center cursor-pointer hover:text-slate-500'>

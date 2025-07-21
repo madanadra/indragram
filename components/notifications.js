@@ -20,16 +20,14 @@ export default function Notifications() {
 
     return (
         <div onClick={() => dispatch({type: 'CHANGE_MODAL', modal: null})}
-        className={`${state.modal != 'notifications' && 'hidden'} fixed z-20 inset-0 bg-[#000] grid items-center bg-opacity-50 modal`}>
-            <div className="w-full max-w-sm p-3.5 mx-auto">
-                <div className="grid bg-[#fff] rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
-                    <h1 className='text-center font-semibold p-2.5 border-b border-slate-200'>Notifications</h1>
-                    <div className='grid content-start py-2.5 aspect-square'>
-                        <h1 className="font-semibold px-3.5 pb-2">Earlier</h1>
-                        {user.filter((_, i) => i <= 3).map((item, i) => 
-                            <User key={i} image={item.image} username={item.username} time={`${i+1}h`} follow={i === 2 && true} />
-                        )}
-                    </div>
+        className={`${state.modal != 'notifications' && 'hidden'} fixed z-20 inset-0 bg-[#000] grid items-center bg-opacity-50 modal p-3.5`}>
+            <div className="w-full max-w-sm mx-auto h-96 flex flex-col bg-[#fff] rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
+                <h1 className='text-center font-semibold p-2.5 border-b border-slate-200'>Notifications</h1>
+                <div className='grow grid content-start py-2.5'>
+                    <h1 className="font-semibold px-3.5 pb-2">Earlier</h1>
+                    {user.filter((_, i) => i <= 3).map((item, i) => 
+                        <User key={i} image={item.image} username={item.username} time={`${i+1}h`} follow={i === 2 && true} />
+                    )}
                 </div>
             </div>
         </div>

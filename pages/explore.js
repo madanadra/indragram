@@ -19,7 +19,7 @@ export default function Explore() {
         status === 'authenticated' &&
         <Layout title='Explore'>
                 <div className="grow max-w-[910px] mx-auto py-[50px] md:py-10 md:px-7 grid grid-cols-3 gap-px md:gap-5">
-                    {[...state.post, ...state.post].map((item, i) => 
+                    {[...state.post, ...state.post, ...state.post].map((item, i) => 
                         <Gridbox key={i} item={item} />
                     )}
                 </div>

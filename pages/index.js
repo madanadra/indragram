@@ -35,7 +35,7 @@ export default function Home() {
             <img src={session.user.image} alt='avatar' referrerPolicy='no-referrer' 
             className='rounded-full h-16 aspect-square border border-slate-200 cursor-pointer' />
             <div className='grid gap-y-1.5 grow'>
-              <h1 className='text-sm font-semibold cursor-pointer truncate leading-none'>test_user</h1>
+              <h1 className='text-sm font-semibold cursor-pointer truncate leading-none'>mainprofile</h1>
               <h1 className='text-sm text-slate-500 truncate leading-none'>{session.user.name}</h1>
             </div>
             <h1 className='text-xs font-semibold text-blue-500 cursor-pointer'>Switch</h1>

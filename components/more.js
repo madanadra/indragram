@@ -13,17 +13,15 @@ export default function More() {
 
     return (
         <div onClick={() => dispatch({type: 'CHANGE_MODAL', modal: null})}
-        className={`${state.modal != 'more' && 'hidden'} fixed z-20 inset-0 bg-[#000] grid items-center bg-opacity-50 modal`}>
-            <div className="w-full max-w-sm p-3.5 mx-auto">
-                <div className="grid bg-[#fff] rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
-                    <Menu name='Settings' />
-                    <Menu name='Your activity' />
-                    <Menu name='Saved' />
-                    <Menu name='Switch appearance' />
-                    <Menu name='Report a problem' />
-                    <Menu name='Switch accounts' />
-                    <Menu name='Sign out' click={() => signOut()} />
-                </div>
+        className={`${state.modal != 'more' && 'hidden'} fixed z-20 inset-0 bg-[#000] grid items-center bg-opacity-50 modal p-3.5`}>
+            <div className="w-full max-w-sm mx-auto grid bg-[#fff] rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
+                <Menu name='Settings' />
+                <Menu name='Your activity' />
+                <Menu name='Saved' />
+                <Menu name='Switch appearance' />
+                <Menu name='Report a problem' />
+                <Menu name='Switch accounts' />
+                <Menu name='Sign out' click={() => signOut()} />
             </div>
         </div>
     )
