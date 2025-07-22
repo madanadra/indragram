@@ -29,13 +29,13 @@ export default function Search() {
     return (
         <div onClick={() => dispatch({type: 'CHANGE_MODAL', modal: null})}
         className={`${state.modal != 'search' && 'hidden'} fixed z-20 inset-0 bg-[#000] grid items-center bg-opacity-50 modal p-3.5`}>
-            <div className="h-96 w-full max-w-sm mx-auto grid bg-[#fff] rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
+            <div className="h-96 w-full max-w-sm mx-auto flex flex-col bg-[#fff] rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
                 <h1 className='text-center font-semibold p-2.5 border-b border-slate-200'>Search</h1>
                 <div className='py-2.5 px-3.5'>
                     <input type='text' placeholder='Search' ref={input}
                     className='w-full outline-none bg-slate-100 py-1.5 px-2.5 rounded-md' />
                 </div>
-                <div className='grid content-start pb-2.5'>
+                <div className='grow grid content-start pb-2.5 overflow-y-scroll'>
                     <div className='flex justify-between items-center px-3.5 pb-2'>
                         <h1 className="font-semibold">Recent</h1>
                         <h1 className='text-blue-500 cursor-pointer'>Clear all</h1>
